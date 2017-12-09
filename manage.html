@@ -294,10 +294,12 @@
         <label for="manage.newUI.favicons" i18n-text="manageFavicons">
           <input id="manage.newUI.favicons" type="checkbox">
           <svg class="svg-icon checked"><use xlink:href="#svg-icon-checked"/></svg>
-          <svg class="svg-icon select-arrow" data-toggle-on-click="#faviconsHelp">
-            <title i18n-text="optionsSubheading"></title>
-            <use xlink:href="#svg-icon-select-arrow"/>
-          </svg>
+          <a href="#" data-toggle-on-click="#faviconsHelp">
+            <svg class="svg-icon select-arrow">
+              <title i18n-text="optionsSubheading"></title>
+              <use xlink:href="#svg-icon-select-arrow"/>
+            </svg>
+          </a>
         </label>
         <div id="faviconsHelp" class="hidden" i18n-text="manageFaviconsHelp">
           <div>
