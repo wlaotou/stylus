@@ -191,6 +191,9 @@ function createStyleElement({style, name}) {
 
   if (style.url) {
     $('.homepage', entry).appendChild(parts.homepageIcon.cloneNode(true));
+  } else {
+    $('.homepage', entry).removeAttribute('href');
+    $('.homepage', entry).classList.add('disabled');
   }
   if (style.updateUrl && newUI.enabled) {
     $('.actions', entry).appendChild(template.updaterIcons.cloneNode(true));

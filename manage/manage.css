@@ -159,7 +159,7 @@ select {
 }
 
 .homepage .svg-icon {
-  margin-top: -4px;
+  margin-top: 0;
   margin-left: .5ex;
 }
 
@@ -446,10 +446,11 @@ select {
   color: hsla(180, 100%, 15%, 1);
 }
 
-.newUI .homepage .svg-icon {
-  position: absolute;
-  margin-top: 0;
-  margin-left: -28px;
+/* align delete button if no homepage link */
+.newUI a.homepage.disabled {
+  /* margin-left: 0.5ex + 20px svg width + margin-right: 8px */
+  width: calc(0.5ex + 28px);
+  display: inline-block;
 }
 
 .newUI .actions {
@@ -692,7 +693,7 @@ input[id^="manage.newUI"] {
   display: none;
 }
 
-/* Check update button for things that can*/
+/* Check update button for things that can */
 .updatable .check-update {
   display: inline;
 }
