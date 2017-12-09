@@ -467,6 +467,25 @@ select {
     margin-right: 8px;
 }
 
+.newUI .style-name-link:focus,
+.newUI .actions a:focus,
+.newUI a.expander {
+  outline: none;
+  text-decoration: none;
+}
+
+.newUI .style-name-link,
+.newUI .actions a svg,
+.newUI a.expander {
+  border-bottom: 1px dashed transparent;
+}
+
+.newUI .style-name-link:focus,
+.newUI .actions a:focus svg,
+.newUI a.expander:focus {
+  border-bottom: 1px dashed #AAA;
+}
+
 .newUI .updater-icons > * {
   transition: opacity 1s;
   display: none;
@@ -688,8 +707,8 @@ input[id^="manage.newUI"] {
 }
 
 /* Default, no update buttons */
-.update,
-.check-update {
+.updater-icons .update,
+.updater-icons .check-update {
   display: none;
 }
 

@@ -337,10 +337,12 @@ Object.assign(handleEvent, {
   },
 
   check(event, entry) {
+    event.preventDefault();
     checkUpdate(entry);
   },
 
   update(event, entry) {
+    event.preventDefault();
     const request = Object.assign(entry.updatedCode, {
       id: entry.styleId,
       reason: 'update',
@@ -356,6 +358,7 @@ Object.assign(handleEvent, {
   },
 
   delete(event, entry) {
+    event.preventDefault();
     const id = entry.styleId;
     const {name} = BG.cachedStyles.byId.get(id) || {};
     animateElement(entry);
@@ -377,7 +380,8 @@ Object.assign(handleEvent, {
     event.preventDefault();
   },
 
-  expandTargets() {
+  expandTargets(event) {
+    event.preventDefault();
     this.closest('.applies-to').classList.toggle('expanded');
   },
 
