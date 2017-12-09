@@ -93,11 +93,16 @@
   margin-right: 4px;
 }
 
-.config-body label:not(.nondefault) .config-reset-icon {
-  visibility: hidden;
+.config-reset-icon {
+  width: 16px;
+  display: inline-block;
 }
 
-.svg-icon.config-reset-icon {
+.config-body label:not(.nondefault) .config-reset-icon a {
+  display: none;
+}
+
+.config-reset-icon .svg-icon {
   /*position: absolute;*/
   pointer-events: all !important;
   cursor: pointer;
@@ -110,7 +115,7 @@
   flex-shrink: 0;
 }
 
-.svg-icon.config-reset-icon:hover {
+.config-reset-icon:hover .svg-icon {
   fill: #666;
 }
 

@@ -185,12 +185,16 @@ function configDialog(style) {
   }
 
   function buildConfigForm() {
-    let resetter = $create('SVG:svg.svg-icon.config-reset-icon', {viewBox: '0 0 20 20'}, [
-      $create('SVG:title', t('genericResetLabel')),
-      $create('SVG:polygon', {
-        points: '16.2,5.5 14.5,3.8 10,8.3 5.5,3.8 3.8,5.5 8.3,10 3.8,14.5 ' +
-                '5.5,16.2 10,11.7 14.5,16.2 16.2,14.5 11.7,10',
-      }),
+    let resetter = $create('span.config-reset-icon', [
+      $create('a', {href:'#'}, [
+        $create('SVG:svg.svg-icon', {viewBox: '0 0 20 20'}, [
+          $create('SVG:title', t('genericResetLabel')),
+          $create('SVG:polygon', {
+            points: '16.2,5.5 14.5,3.8 10,8.3 5.5,3.8 3.8,5.5 8.3,10 3.8,14.5 ' +
+                    '5.5,16.2 10,11.7 14.5,16.2 16.2,14.5 11.7,10',
+          })
+        ])
+      ])
     ]);
     for (const va of vars) {
       let children;
