@@ -514,7 +514,8 @@ function showToMozillaHelp() {
   showHelp(t('styleMozillaFormatHeading'), t('styleToMozillaFormatHelp'));
 }
 
-function showToggleStyleHelp() {
+function showToggleStyleHelp(event) {
+  event.preventDefault();
   showHelp(t('helpAlt'), t('styleEnabledToggleHint'));
 }
 

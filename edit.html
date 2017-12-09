@@ -191,10 +191,12 @@
           <label id="enabled-label" i18n-text="styleEnabledLabel">
             <input type="checkbox" id="enabled" class="style-contributor">
             <svg class="svg-icon checked"><use xlink:href="#svg-icon-checked"/></svg>
-          </label><!--
-          --><svg id="toggle-style-help" class="svg-icon info">
-            <use xlink:href="#svg-icon-help"/>
-          </svg>
+          </label>
+          <a href="#" id="toggle-style-help" class="svg-inline-wrapper">
+            <svg class="svg-icon info">
+              <use xlink:href="#svg-icon-help"/>
+            </svg>
+          </a>
         </div>
       </section>
       <section id="actions">
@@ -246,11 +248,11 @@
             <input id="editor.colorpicker" type="checkbox">
             <svg class="svg-icon checked"><use xlink:href="#svg-icon-checked"/></svg>
           </label>
-          <span class="svg-inline-wrapper" i18n-title="shortcutsNote">
-            <svg id="colorpicker-settings" class="svg-icon settings">
+          <a id="colorpicker-settings" href="#" class="svg-inline-wrapper" i18n-title="shortcutsNote">
+            <svg class="svg-icon settings">
               <use xlink:href="#svg-icon-settings"/>
             </svg>
-          </span>
+          </a>
         </div>
         <div class="option usercss-only">
           <label i18n-text="appliesLineWidgetLabel" i18n-title="appliesLineWidgetWarning">
@@ -268,9 +270,9 @@
             <select id="editor.keyMap"></select>
             <svg class="svg-icon select-arrow"><use xlink:href="#svg-icon-select-arrow"/></svg>
           </div>
-          <span class="svg-inline-wrapper">
-            <svg id="keyMap-help" class="svg-icon info"><use xlink:href="#svg-icon-help"/></svg>
-          </span>
+          <a id="keyMap-help" href="#" class="svg-inline-wrapper">
+            <svg class="svg-icon info"><use xlink:href="#svg-icon-help"/></svg>
+          </a>
         </div>
         <div class="option aligned">
           <label id="theme-label" for="editor.theme" i18n-text="cm_theme"></label>
@@ -300,11 +302,11 @@
               </select>
               <svg class="svg-icon select-arrow"><use xlink:href="#svg-icon-select-arrow"/></svg>
             </div>
-          <span class="svg-inline-wrapper" i18n-title="linterConfigTooltip">
-            <svg id="linter-settings" class="svg-icon settings">
+          <a id="linter-settings" href="#" class="svg-inline-wrapper" i18n-title="linterConfigTooltip">
+            <svg class="svg-icon settings">
               <use xlink:href="#svg-icon-settings"/>
             </svg>
-          </span>
+          </a>
         </div>
       </details>
       <details id="lint" class="hidden" data-pref="editor.lint.expanded">
