@@ -17,10 +17,11 @@ function messageBox({
     onshow(messageBox.element);
   }
   messageBox.element.focus();
-  const btn = $('button', messageBox.element);
-  if (btn) {
-    btn.focus();
+  const firstEl = $('a, button, input, select', messageBox.element);
+  if (firstEl) {
+    firstEl.focus();
   }
+  messageBox.lastEl = firstEl || messageBox.element;
   return new Promise(_resolve => {
     messageBox.resolve = _resolve;
   });
@@ -35,11 +36,22 @@ function messageBox({
       },
       key(event) {
         const keyCode = event.keyCode || event.which;
+        if (event.target.closest('#message-box')) {
+          messageBox.lastEl = event.target;
+        }
         if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey
         && (keyCode === 13 || keyCode === 27)) {
           event.preventDefault();
           event.stopPropagation();
           resolveWith(keyCode === 13 ? {enter: true, button: event.target.buttonIndex} : {esc: true});
+        }
+      },
+      keyup(event) {
+        const keyCode = event.keyCode || event.which;
+        if (keyCode === 9 && !event.target.closest('#message-box')) {
+          event.preventDefault();
+          event.stopPropagation();
+          messageBox.lastEl.focus();
         }
       },
       scroll() {
@@ -91,10 +103,12 @@ function messageBox({
       window.addEventListener('scroll', messageBox.listeners.scroll);
     }
     window.addEventListener('keydown', messageBox.listeners.key, true);
+    window.addEventListener('keyup', messageBox.listeners.keyup, true);
   }
 
   function unbindGlobalListeners() {
     window.removeEventListener('keydown', messageBox.listeners.key, true);
+    window.removeEventListener('keyup', messageBox.listeners.keyup, true);
     window.removeEventListener('scroll', messageBox.listeners.scroll);
   }
 
