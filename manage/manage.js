@@ -368,8 +368,8 @@ Object.assign(handleEvent, {
       className: 'danger center',
       buttons: [t('confirmDelete'), t('confirmCancel')],
     })
-    .then(({button, enter}) => {
-      if (button === 0 || enter) {
+    .then(({button}) => {
+      if (button === 0) {
         deleteStyleSafe({id});
       }
     });

@@ -39,7 +39,7 @@ function messageBox({
         && (keyCode === 13 || keyCode === 27)) {
           event.preventDefault();
           event.stopPropagation();
-          resolveWith(keyCode === 13 ? {enter: true} : {esc: true});
+          resolveWith(keyCode === 13 ? {enter: true, button: event.target.buttonIndex} : {esc: true});
         }
       },
       scroll() {
