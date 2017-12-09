@@ -8,6 +8,7 @@ function messageBox({
   onshow,         // function(messageboxElement) invoked after the messagebox is shown
   blockScroll,    // boolean, blocks the page scroll
 }) {              // RETURNS: Promise resolved to {button[number], enter[boolean], esc[boolean]}
+  messageBox.originalFocus = document.activeElement;
   initOwnListeners();
   bindGlobalListeners();
   createElement();
@@ -16,6 +17,10 @@ function messageBox({
     onshow(messageBox.element);
   }
   messageBox.element.focus();
+  const btn = $('button', messageBox.element);
+  if (btn) {
+    btn.focus();
+  }
   return new Promise(_resolve => {
     messageBox.resolve = _resolve;
   });
@@ -50,6 +55,7 @@ function messageBox({
       className: 'fadeout',
       onComplete: removeSelf,
     });
+    messageBox.originalFocus.focus();
   }
 
   function createElement() {
