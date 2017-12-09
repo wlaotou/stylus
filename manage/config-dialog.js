@@ -28,13 +28,13 @@ function configDialog(style) {
     ],
     buttons: [{
       textContent: t('confirmSave'),
-      dataset: {cmd: 'save'},
+      dataset: {cmd: 'save', allowEnter: true},
       disabled: true,
       onclick: save,
     }, {
       textContent: t('genericResetLabel'),
       title: t('optionsReset'),
-      dataset: {cmd: 'default'},
+      dataset: {cmd: 'default', allowEnter: true},
       onclick: useDefault,
     }, {
       textContent: t('confirmClose'),
@@ -76,7 +76,13 @@ function configDialog(style) {
     updateButtons();
   }
 
-  function onhide() {
+  function onhide({button, enter}) {
+    if (enter) {
+      switch (button) {
+        case 0: save(); break;
+        case 1: useDefault(); break;
+      }
+    }
     document.body.style.minWidth = '';
     document.body.style.minHeight = '';
     colorpicker.hide();
@@ -186,7 +192,7 @@ function configDialog(style) {
 
   function buildConfigForm() {
     let resetter = $create('span.config-reset-icon', [
-      $create('a', {href:'#'}, [
+      $create('a', {href:'#', dataset: {allowEnter: true}}, [
         $create('SVG:svg.svg-icon', {viewBox: '0 0 20 20'}, [
           $create('SVG:title', t('genericResetLabel')),
           $create('SVG:polygon', {
@@ -202,8 +208,10 @@ function configDialog(style) {
         case 'color':
           children = [
             $create('.cm-colorview.config-value', [
-              va.input = $create('.color-swatch', {
+              va.input = $create('a.color-swatch', {
                 va,
+                href: '#',
+                dataset: {allowEnter: true},
                 onclick: showColorpicker
               }),
             ]),
@@ -254,8 +262,8 @@ function configDialog(style) {
       }
 
       resetter = resetter.cloneNode(true);
-      resetter.va = va;
-      resetter.onclick = resetOnClick;
+      $('a', resetter).va = va;
+      $('a', resetter).onclick = resetOnClick;
 
       elements.push(
         $create(`label.config-${va.type}`, [
@@ -304,10 +312,16 @@ function configDialog(style) {
   }
 
   function resetOnClick(event) {
-    event.preventDefault();
-    this.va.value = null;
-    renderValues([this.va]);
-    onchange({target: this.va.input});
+    if (
+      event.type === 'click' ||
+      (event.keyCode || event.which) === 13
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+      this.va.value = null;
+      renderValues([this.va]);
+      onchange({target: this.va.input});
+    }
   }
 
   function showColorpicker() {

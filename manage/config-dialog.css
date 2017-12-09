@@ -104,7 +104,7 @@
 
 .config-reset-icon .svg-icon {
   /*position: absolute;*/
-  pointer-events: all !important;
+  pointer-events: none;
   cursor: pointer;
   /*right: -7px;*/
   fill: #aaa;
@@ -160,9 +160,11 @@
 
 .color-swatch {
   position: absolute;
+  top: 0;
+  left: 0;
   border: 1px solid gray;
-  margin-top: -22px;
   cursor: pointer;
+  opacity: 1;
 }
 
 .colorpicker-popup {

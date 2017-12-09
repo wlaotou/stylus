@@ -36,8 +36,12 @@ function messageBox({
       },
       key(event) {
         const keyCode = event.keyCode || event.which;
-        if (event.target.closest('#message-box')) {
+        if (event.target.closest('#message-box, .colorpicker-popup')) {
           messageBox.lastEl = event.target;
+        }
+        if (keyCode === 13 && event.target.dataset.allowEnter) {
+          // usercss item resets needs to activate
+          return;
         }
         if (!event.shiftKey && !event.ctrlKey && !event.altKey && !event.metaKey
         && (keyCode === 13 || keyCode === 27)) {
@@ -48,7 +52,7 @@ function messageBox({
       },
       keyup(event) {
         const keyCode = event.keyCode || event.which;
-        if (keyCode === 9 && !event.target.closest('#message-box')) {
+        if (keyCode === 9 && !event.target.closest('#message-box, .colorpicker-popup')) {
           event.preventDefault();
           event.stopPropagation();
           messageBox.lastEl.focus();
