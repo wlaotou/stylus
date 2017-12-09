@@ -856,8 +856,8 @@ input[id^="manage.newUI"] {
   border-radius: 0.25rem;
 }
 
-#search-wrapper .info {
-  margin: 4px -5px 0 8px;
+#search-wrapper #search-help {
+  margin: 4px 0 0 8px;
 }
 
 #message-box.help-text > div {
