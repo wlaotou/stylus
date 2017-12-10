@@ -78,6 +78,7 @@ label {
 
 .svg-inline-wrapper {
   outline: none;
+  text-decoration: none;
 }
 
 .svg-inline-wrapper svg {
